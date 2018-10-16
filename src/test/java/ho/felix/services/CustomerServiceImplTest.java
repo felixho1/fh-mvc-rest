@@ -2,6 +2,7 @@ package ho.felix.services;
 
 import ho.felix.api.v1.mapper.CustomerMapper;
 import ho.felix.api.v1.model.CustomerDTO;
+import ho.felix.controllers.v1.CustomerController;
 import ho.felix.domain.Customer;
 import ho.felix.repositories.CustomerRepository;
 import org.junit.Before;
@@ -91,7 +92,7 @@ public class CustomerServiceImplTest {
 
         //then
         assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
-        assertEquals("/api/v1/customers/1", savedDto.getCustomerUrl());
+        assertEquals(CustomerController.BASE_URL + "/1", savedDto.getCustomerUrl());
     }
 
     @Test
@@ -113,7 +114,7 @@ public class CustomerServiceImplTest {
 
         //then
         assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
-        assertEquals("/api/v1/customers/1", savedDto.getCustomerUrl());
+        assertEquals(CustomerController.BASE_URL + "/1", savedDto.getCustomerUrl());
     }
 
     @Test
