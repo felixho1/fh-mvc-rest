@@ -3,11 +3,14 @@ package ho.felix.controllers.v1;
 import ho.felix.api.v1.model.CustomerDTO;
 import ho.felix.api.v1.model.CustomerListDTO;
 import ho.felix.services.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
+@Api(description = "This is My Customer Controller")
 public class CustomerController {
     public static final String BASE_URL = "/api/v1/customers";
     private final CustomerService customerService;
@@ -18,6 +21,7 @@ public class CustomerController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "This will get a list of customers.", notes = "These are some notes about the API.")
     public CustomerListDTO getListOfCustomers() {
         return new CustomerListDTO(customerService.getAllCustomers());
     }
